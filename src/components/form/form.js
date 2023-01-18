@@ -7,7 +7,7 @@ import CustomInputFields from "../../atoms/InputFields/input";
 import FormStyle from "../form/form.module.css";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
-import { json, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { isValidEmail,isValidPass } from "../../Helper/validtion";
 import { useRecoilState } from "recoil";
 import {userInfo} from '../../atom'
