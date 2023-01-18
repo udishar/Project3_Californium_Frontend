@@ -1,8 +1,10 @@
 import React from 'react'
 import InputStyle from '../InputFields/input.module.css'
-function CustomInputFields({abc}) {
+function CustomInputFields({abc ,  handleChange , type}) {
   return (
-    <input type="text"  placeholder={abc} className={InputStyle.text}/>
+    
+    <input type={type}  placeholder={abc} className={InputStyle.text} onChange={(e)=>handleChange(e.target.value)}/>
+   
       )
 }
 
