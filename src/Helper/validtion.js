@@ -1,4 +1,6 @@
+
 export function isValidEmail(email) {
+ 
   let regEx =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*(\.\w{2,3})+$/;
 
@@ -23,7 +25,7 @@ export function isValidPass(password) {
 }
 
 export function isValidPhone(Phone) {
-  const regExp = /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}/
+  const regExp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
   if (Phone === "") {
     return "Enter Phone Number";
   } else if (regExp.test(Phone)) {
@@ -32,13 +34,13 @@ export function isValidPhone(Phone) {
     return "Invalid Phone number";
   }
 }
-export function usernameValidation(username){
+export function usernameValidation(username) {
   const reg = /^[A-Za-z][A-Za-z0-9_]{7,29}$/;
   if (username === "") {
     return "Enter Username";
   } else if (reg.test(username)) {
-    return "Valid Username"
+    return "Valid Username";
   } else if (!reg.test(username)) {
-    return "Invalid Username"
-  } 
-};
+    return "Invalid Username";
+  }
+}

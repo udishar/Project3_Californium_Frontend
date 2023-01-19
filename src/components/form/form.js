@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React, { useState } from "react";
 import CustomButton from "../../atoms/button/button";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
@@ -7,57 +7,107 @@ import CustomInputFields from "../../atoms/InputFields/input";
 import FormStyle from "../form/form.module.css";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
-import { Link } from "react-router-dom";
-import { isValidEmail,isValidPass } from "../../Helper/validtion";
+ import { Link } from "react-router-dom";
+import { isValidEmail, isValidPass } from "../../Helper/validtion";
 import { useRecoilState } from "recoil";
-import {userInfo} from '../../atom'
-
+import { userInfo } from "../../atom";
+import { useNavigate } from "react-router-dom";
 
 export default function Form(props) {
   const { open } = props;
-  const placeholderEmail="Enter Email Here..."
-  const placeholderPass="Enter Password Here.."
+  const placeholderEmail = "Phone, Email or username";
+  const placeholderPass = "Enter Password Here..";
+// here value could be email,username , phone number
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useRecoilState(userInfo);
 
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
-  const [loggedIn,setLoggedIn] = useRecoilState(userInfo)
-  
-  function handleEmail(inputEmail){
-    setEmail(inputEmail)
-      }
-function handlePassword(inputPass){
-  setPassword(inputPass)
-  
-}
-const userData= JSON.parse(localStorage.getItem("userData")) || []
-function handleSubmit(){
- userData.push({
-  email:email,
-  password:password,
-  isUserLoggedIn:loggedIn.isUserLoggedIn
-  })
-  const isEmailValid=isValidEmail(email)
-  const isPasswordValid = isValidPass(password)
-  if(isEmailValid == "Valid Email" && isPasswordValid == "Valid Password"){
-    localStorage.setItem('userData', JSON.stringify(userData))
-    setLoggedIn({...loggedIn,isUserLoggedIn:true})
-    alert ("you are successfully logged in")
-    }
+  let navigate=useNavigate()
+  const routeChange=()=>{
+    let path='/home'
+    navigate(path);
+  }
 
-    else if(isEmailValid=="Invalid email" || isPasswordValid=="Invalid Password"){
-      alert("Invalid Details")
-    }
-    else{
-      alert("Enter details properly")
-    }
-    setEmail("")
-    setPassword("")
+  function handleEmail(inputEmail) {
+    setEmail(inputEmail);
+  }
+  function handlePassword(inputPass) {
+    setPassword(inputPass);
+  }
  
-  
-  
-  console.log(isEmailValid,isPasswordValid)
-}
+  function handlePhone(inputPhone) {
+    setPhone(inputPhone);
+  }
+  function handleUsername(inputUsername) {
+    setUsername(inputUsername);
+  }
+  const isEmailValid = isValidEmail(email);
+  const isPasswordValid = isValidPass(password);
+  const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
+  function handleSubmit() {
+    let flag=true
+    for (let i = 0; i < userData.length; i++) {
+      if(email){
+      if (userData[i].email == email.toLowerCase()) {
+        flag=false
+        console.log(userData[i].email, email);
+        console.log(userData[i].password, password);
+
+        if (userData[i].password == password) {
+          setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
+         let a= alert("YOU ARE SUCCESSFULLY LOGGED IN");
+         
+         
+        } else {
+          alert("INCORRECT PASSWORD");
+          break;
+        }
+      }
+    }
+    if(phone){
+      if (userData[i].phoneNumber == phone) {
+        flag=false
+        if (userData[i].password == password) {
+          setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
+          alert("YOU ARE SUCCESSFULLY LOGGED IN");
+        } else {
+          alert("INCORRECT PASSWORD");
+          break;
+        }
+      }
+    }
+    if(username){
+      if (userData[i].username == username) {
+        flag=false
+        if (userData[i].password == password) {
+          setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
+          alert("YOU ARE SUCCESSFULLY LOGGED IN");
+          
+        } else {
+          alert("INCORRECT PASSWORD");
+          
+          break;
+        }
+      }
+    }
+    }
+    if(flag){
+      alert("USER NOT FOUND")
+     
+
+    }
+    userData.push({
+      email: email,
+      password: password,
+      isUserLoggedIn: loggedIn.isUserLoggedIn,
+    });
+   
+
+    
+  }
   return (
     <Dialog open className={FormStyle.dialog}>
       <div className={FormStyle.icon}>
@@ -81,30 +131,41 @@ function handleSubmit(){
 
         <h5 className={FormStyle.heading1}>or</h5>
         <div className={FormStyle.in}>
-
-        <CustomInputFields abc={placeholderEmail} handleChange={handleEmail} type="text" />
-        <CustomInputFields abc={placeholderPass} handleChange={handlePassword} type="password" />
-        
+          <CustomInputFields
+            abc={placeholderEmail}
+            handleChange={handleEmail}
+            type="text"
+            style={{ marginBottom: "10px" }}
+          />
+          {isEmailValid}
+         
+          <CustomInputFields
+            abc={placeholderPass}
+            handleChange={handlePassword}
+            type="password"
+          />
+          {isPasswordValid}
+         
         </div>
         <div className={FormStyle.btn3}>
-        <CustomButton
-          texted="Submit"
-          style={{ backgroundColor: "black", color: "white" }}
-          onClicking={handleSubmit}
-          
-         
-        />
+          <CustomButton
+            texted="Submit"
+            style={{ backgroundColor: "black", color: "white" }}
+            onClicking={handleSubmit}
+          />
+
         </div>
         <div className={FormStyle.btn4}>
-        <CustomButton texting="Forgot password?" />
+          <CustomButton texting="Forgot password?" />
         </div>
         <div className={FormStyle.login}>
-        <p>Don't have an account?</p>
-        <Link to="/signup" className={FormStyle.link}> Sign up</Link>
+          <p>Don't have an account?</p>
+          <Link to="/signup" className={FormStyle.link}>
+            {" "}
+            Sign up
+          </Link>
         </div>
-
       </div>
-     
     </Dialog>
   );
 }

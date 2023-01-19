@@ -13,11 +13,11 @@ import { useNavigate } from "react-router-dom";
 export default function SignUp(props) {
   const { open } = props;
 
-  const navigate=useNavigate()
-  const route=()=>{
-    let path='/register';
-    navigate(path)
-  }
+  const navigate = useNavigate();
+  const route = () => {
+    let path = "/register";
+    navigate(path);
+  };
   return (
     <Dialog open className={SignupStyle.dialog}>
       <div className={SignupStyle.icon}>
@@ -41,7 +41,10 @@ export default function SignUp(props) {
 
         <h5 className={SignupStyle.heading1}>or</h5>
         <div className={SignupStyle.texxt}>
-          <CustomButton teext="Sign with a phone number or email" onClicking={route}/>
+          <CustomButton
+            teext="Sign with a phone number or email"
+            onClicking={route}
+          />
         </div>
         <div className={SignupStyle.para}>
           <p>
@@ -61,7 +64,7 @@ export default function SignUp(props) {
         </div>
         <div className={SignupStyle.login}>
           <p> Have an account already?</p>
-          <Link to="/" className={SignupStyle.link}>
+          <Link to="/signin" className={SignupStyle.link}>
             Log in
           </Link>
         </div>

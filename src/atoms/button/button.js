@@ -8,7 +8,7 @@ export default function CustomButton({
   style,
   teext,
   onClicking,
-  value
+  value,
 }) {
   return (
     <button className={buttonStyle.btn} style={style} onClick={onClicking}>

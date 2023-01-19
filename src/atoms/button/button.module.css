@@ -1,10 +1,8 @@
-.btn{
-    width: 250px;
-    background-color: white;
-    color: black;
-    border:none;
-    padding: 10px;
-    font-size: .9rem;
-    
+.btn {
+  width: 250px;
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px;
+  font-size: 0.9rem;
 }
-

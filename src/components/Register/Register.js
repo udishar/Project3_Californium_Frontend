@@ -21,7 +21,10 @@ const Register = (props) => {
   const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [loggedIn, setLoggedIn] = useRecoilState(userInfo);
+  //const [dob , stDob] = useState("")
+
   function handleEmail(inputEmail) {
+
     setEmail(inputEmail);
   }
   function handlePassword(inputPass) {
@@ -33,19 +36,68 @@ const Register = (props) => {
   function handleUsername(inputUsername) {
     setUsername(inputUsername);
   }
-  const userData = JSON.parse(localStorage.getItem("userData")) || [];
-  function handleSubmit() {
-    userData.push({
-      email: email,
-      password: password,
-      phoneNumber: phone,
-      username: username,
-      isUserLoggedIn: loggedIn.isUserLoggedIn,
-    });
-    const isEmailValid = isValidEmail(email);
-    const isPasswordValid = isValidPass(password);
+  let isEmailValid = isValidEmail(email)
+  const isPasswordValid = isValidPass(password);
     const isUsernameValid = usernameValidation(username);
-    const isPhoneNumberValid = isValidPhone(phone);
+    let isPhoneNumberValid = isValidPhone(phone)
+  const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+
+  function handleSubmit() {
+
+    if(email)
+    {
+      let flag=false;
+      for(let i=0;i<userData.length;i++){
+        if(userData[i].email==email){
+          flag=true;
+        }
+
+      }
+      if(flag){
+        alert("Email is already existed , please use different email")
+      }
+      else{
+        userData.push({
+      
+          email: email.toLowerCase(),
+          password: password,
+          username: username,
+         
+          isUserLoggedIn: loggedIn.isUserLoggedIn,
+        });
+
+      }
+      
+      
+    }
+    else{
+      let flag=false;
+      for(let i=0;i<userData.length;i++){
+        if(userData[i].phoneNumber==phone){
+          flag=true;
+        }
+
+      }
+      if(flag){
+        alert("Phone Number is already in use")
+      }
+else{
+      userData.push({
+       password: password,
+        phoneNumber: phone,
+        username: username,
+        isUserLoggedIn: loggedIn.isUserLoggedIn,
+      });
+    }}
+    
+    console.log(email,password,phone,username)
+    // let isEmailValid
+if(email){ isEmailValid = isValidEmail(email) ; }
+    //   const isPasswordValid = isValidPass(password);
+    // const isUsernameValid = usernameValidation(username);
+    let isPhoneNumberValid
+    if(phone) { isPhoneNumberValid = isValidPhone(phone)}
 
     if (
       isUsernameValid == "Valid Username" &&
@@ -55,35 +107,19 @@ const Register = (props) => {
     ) {
       localStorage.setItem("userData", JSON.stringify(userData));
       setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
-      alert("you are successfully logged in");
-      console.log(
-        isEmailValid,
-        isPasswordValid,
-        isUsernameValid,
-        isPhoneNumberValid
-      );
-    } else if (
+      alert("you are successfully Registered");
       
+    } else if (
       isPasswordValid == "Invalid Password" ||
       isUsernameValid == "Invalid Username" ||
-      (isPhoneNumberValid == "Invalid Phone number "&&
-      isEmailValid == "Invalid email" )
+      (isPhoneNumberValid == "Invalid Phone number " &&
+        isEmailValid == "Invalid email")
     ) {
       alert("Invalid Details");
-      console.log(
-        isEmailValid,
-        isPasswordValid,
-        isUsernameValid,
-        isPhoneNumberValid
-      );
+      
     } else {
       alert("Enter details properly");
-      console.log(
-        isEmailValid,
-        isPasswordValid,
-        isUsernameValid,
-        isPhoneNumberValid
-      );
+    
     }
   }
   const createDigits = () => {
@@ -110,24 +146,35 @@ const Register = (props) => {
         Create Your Account
       </DialogTitle>
       <div className={registerStyle.inputDiv}>
-        <CustomInputFields abc="Enter Username " handleChange={handleUsername} type="text"/>
+        <CustomInputFields
+          abc="Enter Username "
+          handleChange={handleUsername}
+          type="text"
+        />
+        {isUsernameValid}
+        
         <CustomInputFields
           abc="Password "
           handleChange={handlePassword}
           type="password"
         />
+        {isPasswordValid}
+      
         {instead === true ? (
           <CustomInputFields
             type="phonenumber"
             abc="Phone"
             handleChange={handlePhone}
           />
+          
+         
         ) : (
           <CustomInputFields
             type="text"
             abc="Email"
             handleChange={handleEmail}
           />
+          
         )}
         <p
           onClick={() => {
