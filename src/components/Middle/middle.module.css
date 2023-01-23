@@ -1,0 +1,66 @@
+.section{
+    
+    border: 1px gray solid;
+    width :40rem ;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 25rem;
+    
+}
+.home{
+   
+    display: flex;
+    /* align-items: flex-start;
+    justify-content: flex-start; */
+    margin-bottom: 4rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.nav{
+    border:1px rgb(180, 172, 172) solid;
+    width: 37.9rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    position: fixed;
+    background:transparent;
+    backdrop-filter: blur(20px);
+    
+}
+.forYou{
+    
+    
+    position: sticky;
+    top: 6.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+
+}
+.div1{
+   
+    margin-left: 4rem;
+    font-size: 1rem;
+    
+    font-weight: 700;
+}
+.div2{
+    /* border:2px rgb(128, 45, 0) solid; */
+    margin-top: 9.1rem;
+    
+    display:flex;
+    
+    flex-direction: column;
+}
+.div3{
+    
+    margin-right: 5rem;
+}
+.btn{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}

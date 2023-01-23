@@ -9,6 +9,11 @@ export default function CustomButton({
   teext,
   onClicking,
   value,
+  btnTitle,
+  btnValue,
+  followBtn,
+  btnVal
+
 }) {
   return (
     <button className={buttonStyle.btn} style={style} onClick={onClicking}>
@@ -18,6 +23,10 @@ export default function CustomButton({
       {texting}
       {teext}
       {value}
+      {btnTitle}
+      {btnValue}
+      {followBtn}
+      {btnVal}
     </button>
   );
 }

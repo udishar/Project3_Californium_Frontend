@@ -1,32 +1,48 @@
+.mainSectionContainer{
+  
+  height: 98.5vh;
+  text-align: center;
+  position: fixed;
+  display: flex;
+  text-align: center;
+ 
+  
+  
+  
+}
+
 .section1 {
   margin-left: 7rem;
   margin-right: 3rem;
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
   display: flex;
   text-align: start;
   flex-direction: column;
-  border: 2px rgb(228, 6, 213) solid;
+ position:sticky;
+ 
+ 
+ 
 }
 .div1 {
   border: none;
   border-radius: 40px;
   display: flex;
   align-items: center;
-  padding: 0.5rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.9rem;
+  width: max-content;
+  padding-right: .8rem;
 }
 .div1:hover {
   background-color: rgb(225, 222, 222);
 }
 .iconContainer {
   margin-right: 1.5rem;
-}
-.mainSectionContainer {
-  border: 2px rgb(5, 7, 6) solid;
+  
 }
 
 .icons {
-  border: 7px rgb(225, 130, 6) solid;
+  
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -34,12 +50,64 @@
   font-size: 3rem;
   padding: 0.5rem;
   border-radius: 30px;
+  cursor: pointer;
+  
 }
 .text {
-  border: 4px rgb(225, 130, 6) solid;
+  
   font-size: 1.2rem;
-  font-weight: 2rem;
+  font-weight: 5rem;
+  cursor: pointer;
+ 
 }
-.icons :hover {
-  background-color: grey;
+
+.btnTweet{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.twitterIcon{
+    display: flex;
+  text-align: start;
+  flex-direction: column;
+  margin-left: .5rem;
+  margin-bottom: 0.7rem;
+  font-size: 2rem;
+  color:#007bff;
+  width: fit-content;
+  padding: .4rem;
+  cursor: pointer;
+
+ 
+  border-radius: 40px;
+
+  
+}
+.twitterIcon:hover{
+    background-color: #d2e8ff;
+
+}
+.dailogTweet{
+   
+    padding: 2rem;
+    
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    position: absolute;
+    bottom: 1rem;
+   
+    margin-left: 110px;
+    position: fixed;
+    
+}
+.btn{
+  
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }

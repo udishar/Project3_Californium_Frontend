@@ -13,18 +13,19 @@ import {
 import { useRecoilState } from "recoil";
 import { userInfo } from "../../atom";
 
-const Register = (props) => {
-  const { open } = props;
+const Register = () => {
   const [instead, setinstead] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [loggedIn, setLoggedIn] = useRecoilState(userInfo);
-  //const [dob , stDob] = useState("")
+  const [month , setMonth] = useState("")
+  const [date , setDate] = useState("")
+  const [year , setYear] = useState("")
+  
 
   function handleEmail(inputEmail) {
-
     setEmail(inputEmail);
   }
   function handlePassword(inputPass) {
@@ -36,68 +37,77 @@ const Register = (props) => {
   function handleUsername(inputUsername) {
     setUsername(inputUsername);
   }
-  let isEmailValid = isValidEmail(email)
+  function handleMonth(inputMonth){
+    setMonth(inputMonth.target.value)
+    console.log(inputMonth.target.value)
+  }
+  function handleDate(inputDate){
+    setDate(inputDate.target.value)
+    console.log(inputDate.target.value)
+  }
+  function handleYear(inputYear){
+    setYear(inputYear.target.value)
+    console.log(inputYear.target.value)
+  }
+   let dob= month+ "-" + date + "-" + year
+   console.log(dob)
+
+  let isEmailValid = isValidEmail(email);
   const isPasswordValid = isValidPass(password);
-    const isUsernameValid = usernameValidation(username);
-    let isPhoneNumberValid = isValidPhone(phone)
+  const isUsernameValid = usernameValidation(username);
+  let isPhoneNumberValid = isValidPhone(phone);
   const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
-
   function handleSubmit() {
-
-    if(email)
-    {
-      let flag=false;
-      for(let i=0;i<userData.length;i++){
-        if(userData[i].email==email){
-          flag=true;
+    if (email) {
+      let flag = false;
+      for (let i = 0; i < userData.length; i++) {
+        if (userData[i].email == email) {
+          flag = true;
         }
-
       }
-      if(flag){
-        alert("Email is already existed , please use different email")
-      }
-      else{
+      if (flag) {
+        alert("Email is already existed , please use different email");
+      } else {
         userData.push({
-      
           email: email.toLowerCase(),
           password: password,
           username: username,
-         
+          DOB:dob,
+         isUserLoggedIn: loggedIn.isUserLoggedIn,
+        });
+      }
+    } else {
+      let flag = false;
+      for (let i = 0; i < userData.length; i++) {
+        if (userData[i].phoneNumber == phone) {
+          flag = true;
+        }
+      }
+      if (flag) {
+        alert("Phone Number is already in use");
+      } else {
+        userData.push({
+          password: password,
+          phoneNumber: phone,
+          username: username,
+          DOB:dob,
           isUserLoggedIn: loggedIn.isUserLoggedIn,
         });
-
       }
-      
-      
     }
-    else{
-      let flag=false;
-      for(let i=0;i<userData.length;i++){
-        if(userData[i].phoneNumber==phone){
-          flag=true;
-        }
 
-      }
-      if(flag){
-        alert("Phone Number is already in use")
-      }
-else{
-      userData.push({
-       password: password,
-        phoneNumber: phone,
-        username: username,
-        isUserLoggedIn: loggedIn.isUserLoggedIn,
-      });
-    }}
-    
-    console.log(email,password,phone,username)
+    console.log(email, password, phone, username);
     // let isEmailValid
-if(email){ isEmailValid = isValidEmail(email) ; }
+    if (email) {
+      isEmailValid = isValidEmail(email);
+    }
     //   const isPasswordValid = isValidPass(password);
     // const isUsernameValid = usernameValidation(username);
-    let isPhoneNumberValid
-    if(phone) { isPhoneNumberValid = isValidPhone(phone)}
+    let isPhoneNumberValid;
+    if (phone) {
+      isPhoneNumberValid = isValidPhone(phone);
+    }
 
     if (
       isUsernameValid == "Valid Username" &&
@@ -108,7 +118,6 @@ if(email){ isEmailValid = isValidEmail(email) ; }
       localStorage.setItem("userData", JSON.stringify(userData));
       setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
       alert("you are successfully Registered");
-      
     } else if (
       isPasswordValid == "Invalid Password" ||
       isUsernameValid == "Invalid Username" ||
@@ -116,10 +125,8 @@ if(email){ isEmailValid = isValidEmail(email) ; }
         isEmailValid == "Invalid email")
     ) {
       alert("Invalid Details");
-      
     } else {
       alert("Enter details properly");
-    
     }
   }
   const createDigits = () => {
@@ -141,8 +148,19 @@ if(email){ isEmailValid = isValidEmail(email) ; }
     return digitsm;
   };
   return (
-    <Dialog open className={registerStyle.dialog}>
-      <DialogTitle className={registerStyle.title}>
+    <Dialog open 
+ 
+    PaperProps={{
+      style: {
+        borderRadius: "20px",
+       
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center"
+       
+      },
+    }}>
+      <DialogTitle className={registerStyle.title} sx={{fontWeight:"900",fontSize:"2rem"}}>
         Create Your Account
       </DialogTitle>
       <div className={registerStyle.inputDiv}>
@@ -152,29 +170,26 @@ if(email){ isEmailValid = isValidEmail(email) ; }
           type="text"
         />
         {isUsernameValid}
-        
+
         <CustomInputFields
           abc="Password "
           handleChange={handlePassword}
           type="password"
         />
         {isPasswordValid}
-      
+
         {instead === true ? (
           <CustomInputFields
             type="phonenumber"
             abc="Phone"
             handleChange={handlePhone}
           />
-          
-         
         ) : (
           <CustomInputFields
             type="text"
             abc="Email"
             handleChange={handleEmail}
           />
-          
         )}
         <p
           onClick={() => {
@@ -183,9 +198,9 @@ if(email){ isEmailValid = isValidEmail(email) ; }
         >
           <u>
             {instead === true ? (
-              <p>use email instead</p>
+              <p style={{color:"rgb(11, 109, 220)"}}>Use Email Instead</p>
             ) : (
-              <p>use phone instead</p>
+              <p style={{color:"rgb(11, 109, 220)"}}>Use Phone Instead</p>
             )}
           </u>
         </p>
@@ -197,27 +212,27 @@ if(email){ isEmailValid = isValidEmail(email) ; }
           account is for a bussiness, a pet, or something else.
         </p>
       </div>
-      <div className={registerStyle.month}>
-        <select name="Month">
+      <div className={registerStyle.month} >
+        <select name="Month" onChange={handleMonth}>
           <option value="Month">Month</option>
           <option value="January">January</option>
-          <option value="february">february</option>
+          <option value="February">february</option>
           <option value="March">March</option>
           <option value="April">April</option>
           <option value="May">May</option>
           <option value="June">June</option>
           <option value="July">July</option>
           <option value="August">August</option>
-          <option value="Septmber">Septmber</option>
+          <option value="September">September</option>
           <option value="October">October</option>
-          <option value="Navember">Navember</option>
+          <option value="November">November</option>
           <option value="December">December</option>
         </select>
-        <select name="Day">
+        <select name="Day" onChange={handleDate}>
           <option value="Day">Day</option>
           {createDigitsM()}
         </select>
-        <select name="Year">
+        <select name="Year" onChange={handleYear}>
           <option value="Year">Year</option>
           {createDigits()}
         </select>

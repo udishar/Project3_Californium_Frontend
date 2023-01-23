@@ -1,8 +1,4 @@
-.dailog {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .title {
   display: flex;
   align-items: center;
@@ -19,6 +15,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  padding-left: 2rem;
 }
 .month {
   display: flex;
@@ -35,5 +32,6 @@
   text-align: center;
   border-radius: 30px;
   width: 300px;
+  
   font-weight: 800px;
 }

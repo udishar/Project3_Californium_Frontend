@@ -10,8 +10,8 @@ import AppleIcon from "@mui/icons-material/Apple";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function SignUp(props) {
-  const { open } = props;
+export default function SignUp() {
+  
 
   const navigate = useNavigate();
   const route = () => {
@@ -19,13 +19,19 @@ export default function SignUp(props) {
     navigate(path);
   };
   return (
-    <Dialog open className={SignupStyle.dialog}>
+    <Dialog open className={SignupStyle.dialog}
+    PaperProps={{
+      style: {
+        borderRadius: "20px",
+       
+      },
+    }}>
       <div className={SignupStyle.icon}>
-        <TwitterIcon className={SignupStyle.image} />
+        <TwitterIcon className={SignupStyle.image} sx={{fontWeight:"900px" , fontSize:"2rem"}} />
       </div>
 
       <div className={SignupStyle.container}>
-        <DialogTitle className={SignupStyle.title}>
+        <DialogTitle className={SignupStyle.title} sx={{fontWeight:"900px" , fontSize:"2rem" }}>
           Join Twitter Today
         </DialogTitle>
         <div className={SignupStyle.btn1}>
@@ -39,7 +45,7 @@ export default function SignUp(props) {
           <CustomButton text="Sign in with Apple" />
         </div>
 
-        <h5 className={SignupStyle.heading1}>or</h5>
+       <h5 className={SignupStyle.heading1}>------------------------ or -------------------------</h5>
         <div className={SignupStyle.texxt}>
           <CustomButton
             teext="Sign with a phone number or email"
