@@ -53,3 +53,19 @@
 .list:hover{
     background-color: rgb(193, 192, 192);
 }
+.box{
+   
+    border-radius: 30px;
+    width:5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.5rem;
+    background-color: darkgrey;
+    box-shadow: o 3px 20px 23px rgb(32, 30, 30);
+    
+}
+.interest{
+    margin-bottom: 1rem;
+}

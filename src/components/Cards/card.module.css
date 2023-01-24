@@ -22,10 +22,10 @@
 
 .img{
    
-    width: 25rem;
+    width: 35rem;
     margin-top: 1.5rem;
-    border-radius: 50px;
-    margin-left: 5rem;
+    border-radius: 20px;
+    margin-left: 3rem;
     height: 25rem;
     
 }
@@ -35,6 +35,8 @@
     align-items: flex-start;
     justify-content: space-around;
     margin-bottom: 1rem;
+    margin-top: 1rem;
+    color:rgb(96, 94, 94)
 }
 .icons :hover{
     color: rgb(147, 14, 14);
@@ -49,5 +51,43 @@ color:rgb(155, 151, 151);
 }
 
 .caption{
-    margin-left: 2rem;
+    margin-left: 4rem;
+    text-align:left;
+}
+.dailog{
+
+    padding: 3rem;
+    width: 20rem;
+    height: 20rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.btn{
+    
+    width: 20rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+
+}
+.links{
+   
+    margin-left: 4rem;
+    color:rgb(11, 114, 177)
+}
+.links:hover{
+    text-decoration: underline;
+}
+.hashtags{
+    margin-left: 4rem;
+    color:rgb(11, 114, 177)
+}
+.name{
+    font-weight: 700;
+    margin-left: 0.5rem;
 }

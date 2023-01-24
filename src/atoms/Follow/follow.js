@@ -1,29 +1,18 @@
 import React, { useState } from "react";
-import CustomButton from "../button/button";
+// import CustomButton from "../button/button";
 import Avatar from "@mui/material/Avatar";
 import followStyle from "../Follow/follow.module.css";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import FollowBtn from "../FollowBtn/FollowBtn";
 
 export default function FollowList() {
-  const [followBtn, setFollowBtn] = useState("Follow");
-
-  function handleClicked() {
-    if (followBtn == "Follow") {
-      setFollowBtn("Following");
-    }
-    if (followBtn == "Following") {
-      setFollowBtn("Follow");
-    }
-  }
-
   let list = [
     {
       image: <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />,
       name: "Remy Sharp",
       handlerName: "@RemySharp",
       button: (
-        <CustomButton
-          followBtn={followBtn}
+        <FollowBtn
           style={{
             color: "white",
             backgroundColor: "black",
@@ -31,7 +20,6 @@ export default function FollowList() {
             borderRadius: "20px",
             cursor: "pointer",
           }}
-          onClicking={handleClicked}
         />
       ),
     },
@@ -40,8 +28,7 @@ export default function FollowList() {
       name: "Travis Howard",
       handlerName: "@TravisHoward",
       button: (
-        <CustomButton
-          followBtn={followBtn}
+        <FollowBtn
           style={{
             color: "white",
             backgroundColor: "black",
@@ -49,7 +36,6 @@ export default function FollowList() {
             borderRadius: "20px",
             cursor: "pointer",
           }}
-          onClicking={handleClicked}
         />
       ),
     },
@@ -58,8 +44,7 @@ export default function FollowList() {
       name: "Cindy Baker",
       handlerName: "@CindyBaker",
       button: (
-        <CustomButton
-          followBtn={followBtn}
+        <FollowBtn
           style={{
             color: "white",
             backgroundColor: "black",
@@ -67,7 +52,6 @@ export default function FollowList() {
             borderRadius: "20px",
             cursor: "pointer",
           }}
-          onClicking={handleClicked}
         />
       ),
     },
@@ -76,8 +60,8 @@ export default function FollowList() {
 
   return (
     <div className={followStyle.Main}>
-      {listArr.map((items) => (
-        <div className={followStyle.container}>
+      {listArr.map((items, index) => (
+        <div className={followStyle.container} key={items.name}>
           <div className={followStyle.container2}>
             <div className={followStyle.image}>{items.image}</div>
             <div className={followStyle.middle}>
@@ -88,7 +72,7 @@ export default function FollowList() {
               <div className={followStyle.handlername}>{items.handlerName}</div>
             </div>
           </div>
-          <div className={followStyle.btn} >{items.button}</div>
+          <div className={followStyle.btn}>{items.button}</div>
         </div>
       ))}
     </div>

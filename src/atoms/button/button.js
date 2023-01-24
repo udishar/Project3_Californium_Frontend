@@ -12,11 +12,12 @@ export default function CustomButton({
   btnTitle,
   btnValue,
   followBtn,
-  btnVal
+  btnVal,
+  id
 
 }) {
   return (
-    <button className={buttonStyle.btn} style={style} onClick={onClicking}>
+    <button className={buttonStyle.btn} style={style} onClick={onClicking} id={id}>
       {buttonText}
       {text}
       {texted}

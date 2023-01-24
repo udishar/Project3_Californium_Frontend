@@ -111,3 +111,10 @@
   align-items: flex-end;
   justify-content: flex-end;
 }
+.close{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}

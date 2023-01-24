@@ -14,14 +14,14 @@
     display: flex;
     /* align-items: flex-start;
     justify-content: flex-start; */
-    margin-bottom: 4rem;
+    margin-bottom: 2.3rem;
     font-weight: 700;
     font-size: 1.2rem;
 }
 .nav{
-    border:1px rgb(180, 172, 172) solid;
-    width: 37.9rem;
-    padding: 1rem;
+    border:1px rgb(147, 145, 145) solid;
+    width: 40rem;
+    /* padding: rem; */
     margin-bottom: 2rem;
     position: fixed;
     background:transparent;
@@ -34,22 +34,33 @@
     position: sticky;
     top: 6.1rem;
     display: flex;
+    flex: 2;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+
+    
     
 
 
 }
 .div1{
-   
-    margin-left: 4rem;
-    font-size: 1rem;
-    
-    font-weight: 700;
+  
+display: flex;
+align-items: center;
+justify-content: center;
+width:20vw;
+font-size: 1rem;
+font-weight: 700;
+padding: 1rem;
+
+
+}
+.div1:hover{
+    background-color: rgb(218, 210, 210);
 }
 .div2{
     /* border:2px rgb(128, 45, 0) solid; */
-    margin-top: 9.1rem;
+    margin-top: 9rem;
     
     display:flex;
     
@@ -57,7 +68,17 @@
 }
 .div3{
     
-    margin-right: 5rem;
+ 
+  display: flex;
+align-items: center;
+justify-content: center;
+width:20vw;
+font-size: 1rem;
+
+padding:1rem;
+}
+.div3:hover{
+    background-color: rgb(218, 210, 210);
 }
 .btn{
     display: flex;

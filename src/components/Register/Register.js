@@ -12,6 +12,7 @@ import {
 } from "../../Helper/validtion";
 import { useRecoilState } from "recoil";
 import { userInfo } from "../../atom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [instead, setinstead] = useState(true);
@@ -23,6 +24,10 @@ const Register = () => {
   const [month , setMonth] = useState("")
   const [date , setDate] = useState("")
   const [year , setYear] = useState("")
+
+const navigate = useNavigate()
+
+
   
 
   function handleEmail(inputEmail) {
@@ -59,6 +64,8 @@ const Register = () => {
   const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
   function handleSubmit() {
+
+
     if (email) {
       let flag = false;
       for (let i = 0; i < userData.length; i++) {
@@ -118,6 +125,11 @@ const Register = () => {
       localStorage.setItem("userData", JSON.stringify(userData));
       setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
       alert("you are successfully Registered");
+      navigate("/signin")
+
+
+      setUsername("")
+      setPassword("")
     } else if (
       isPasswordValid == "Invalid Password" ||
       isUsernameValid == "Invalid Username" ||
@@ -128,6 +140,7 @@ const Register = () => {
     } else {
       alert("Enter details properly");
     }
+   
   }
   const createDigits = () => {
     const digits = [];
@@ -168,12 +181,14 @@ const Register = () => {
           abc="Enter Username "
           handleChange={handleUsername}
           type="text"
+          value={username}
         />
         {isUsernameValid}
 
         <CustomInputFields
           abc="Password "
           handleChange={handlePassword}
+          value={password}
           type="password"
         />
         {isPasswordValid}
@@ -188,6 +203,7 @@ const Register = () => {
           <CustomInputFields
             type="text"
             abc="Email"
+            value={email}
             handleChange={handleEmail}
           />
         )}
