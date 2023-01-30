@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 
-export default function FollowBtn({style}){
+export default function FollowBtn({id,style}){
+    
     const [isfollow , setIsFollow] = useState(false)
  function handleClick(){
 setIsFollow(!isfollow)

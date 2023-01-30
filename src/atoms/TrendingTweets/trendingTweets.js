@@ -52,7 +52,7 @@ export default function CustomTweets(){
     const [trendsList , setTrendList]=useState(trendsArr)
     
 
-    function handleClick(){
+    function handleClick(i){
         
         setIsopen(true)
          
@@ -100,7 +100,7 @@ export default function CustomTweets(){
         </div>
         </div>
         
-        <div onClick={handleClick} className={tweetStyle.icon}>
+        <div onClick={()=>handleClick(i)} className={tweetStyle.icon}>
         {items.icon}
         </div>
         {isopen

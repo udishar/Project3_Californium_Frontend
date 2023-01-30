@@ -1,5 +1,7 @@
+
+
 import React, { useState,useEffect } from "react";
-import profileStyle from "../UserProfile/userprofile.module.css";
+import profileStyle from "../TweetProfile/tweet.module.css";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -8,23 +10,37 @@ import Box from '@mui/material/Box';
 import CustomButton from "../../atoms/button/button";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { profileAtom } from "../../atom";
+// import { profileAtom } from "../../atom";
 import { useRecoilState } from "recoil";
+import {tweetData} from '../../atom';
+import Left from "../LeftSide/left";
+import Right from "../Right/right";
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 // import CustomInputFields from "../../atoms/InputFields/input";
 
-function Profile() {
-    const [isProfile, setIsProfile] = useRecoilState(profileAtom);
+function TweetProfile() {
+    // const [isProfile, setIsProfile] = useRecoilState(profileAtom);
+    const [ProfileList , setProfileList]=useRecoilState(tweetData)
+    const [searchParams] = useSearchParams();
+    const [activeProfile,setActiveProfile] =useState([])
+   let navigate= useNavigate()
+  
     
+    useEffect(()=>{
+        console.log(searchParams.get("handlerName"))
+        let clickingIndex=ProfileList.filter((ele)=>ele.handlerName == searchParams.get("handlerName"))
+        console.log(clickingIndex)
+        setActiveProfile(clickingIndex)
+    },[])
+
 function handleArrow(){
-    setIsProfile({ ...isProfile, isProfileOpen:false });
+    
+    navigate('/')
+    
 }
 
-
-
-
-
-    function TabPanel(props) {
+function TabPanel(props) {
         const { children, value, index, } = props;
 
         return (
@@ -50,30 +66,40 @@ function handleArrow(){
     }useEffect(()=>{},[])
 
     return (
+
+      <>
+     
+
         <div className={profileStyle.container}>
+        <Left/>
+            
             <section className={profileStyle.section}>
+            {activeProfile.map((item,index)=>(
+                <>
+                {console.log(item,"from tweet")}
                 <div className={profileStyle.top}>
+                   
                     <div onClick={handleArrow}><ArrowBackIcon /></div>
                     
-                    <h3>Udisha Arrawatia</h3>
-                    <h6>0 tweets</h6>
+                    <h3>{item.name}</h3>
+                    <h6>{item.tweets[0].tweetCount}</h6>
                 </div>
-                <div className={profileStyle.maintop}>
-                </div>
+                 <div className={profileStyle.maintop}></div>
 
                 <div className={profileStyle.mainbottom}>
 
-                    <div>
-                        <img src={file} 
-                            style={{ width: "130px", height: "130px", border: "4px solid white", backgroundColor: "rgb(18, 80, 48)",
+                    <div className={profileStyle.img}>
+                        {/* <img src={item.}
+                            style={{ width: "130px", height: "130px", border: "4px solid white", 
                                      borderRadius:"50%" }}
-                            />
+                            /> */}
+                            {item.profileIcon}
                     </div>
 
-                    <h3><b>Udisha Arrawatia</b></h3>
-                    <h5>@udisha_11</h5>
-                    <div className={profileStyle.calender}><CalendarMonthIcon /><h6>joined january 2023</h6></div>
-                    <h6><b>186</b> Following  <b>188</b> Followers</h6>
+                    <h3><b>{item.name}</b></h3>
+                    <h5>{item.handlerName}</h5>
+                    <div className={profileStyle.calender}><CalendarMonthIcon /><h6>joined {item.joinedDate}</h6></div>
+                    <h6><b></b> Following  <b>{item.followings}</b> Followers {item.followers}</h6>
                     <CustomButton text="Edit profile"
                         style={{
                             border: "1px solid black",
@@ -82,7 +108,9 @@ function handleArrow(){
                         }}
                         type="file" handleChange={editProfile}
                     />
-                </div>
+                    
+                </div> 
+                </>))}
                 <Box sx={{ width: '100%' }}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <Tabs value={value} onChange={handleChange}  >
@@ -117,9 +145,12 @@ function handleArrow(){
                         Like
                     </TabPanel>
                 </Box>
+                
             </section>
+            <Right/>
         </div>
-    );
-};
+     
+        </>  
+)}
 
-export default Profile;
+export default TweetProfile;

@@ -108,8 +108,24 @@
 .btn{
   
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+}
+.img{
+   
+  
+  height: 5vh;
+  width: 2.5vw;
+  border-radius: 100px;
+}
+.top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon{
+  color: rgb(29, 155, 240) ;
+  cursor: pointer;
 }
 .close{
   

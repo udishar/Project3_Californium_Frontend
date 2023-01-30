@@ -18,6 +18,7 @@ import { useRecoilState } from "recoil";
 import { userInfo } from "../../atom";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Form() {
   const placeholderEmail = "Enter Username Here..";
   const placeholderPass = "Enter Password Here..";
@@ -31,7 +32,7 @@ export default function Form() {
 
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = "/home";
+    let path = "/";
     navigate(path);
   };
 
@@ -81,6 +82,7 @@ export default function Form() {
 
           if (userData[i].password == password) {
             setLoggedIn({ ...loggedIn, isUserLoggedIn: true });
+            console.log(loggedIn.isUserLoggedIn)
             let a = alert("YOU ARE SUCCESSFULLY LOGGED IN");
             console.log(a);
             if (typeof a == "undefined") {
@@ -129,19 +131,27 @@ export default function Form() {
     });
   }
   return (
-    <Dialog open className={FormStyle.dialog} 
-    PaperProps={{
-      style: {
-        borderRadius: "20px",
-        
-      },
-    }}>
+    <Dialog
+      open
+      className={FormStyle.dialog}
+      PaperProps={{
+        style: {
+          borderRadius: "20px",
+        },
+      }}
+    >
       <div className={FormStyle.icon}>
-        <TwitterIcon className={FormStyle.image} sx={{fontWeight:"700px", fontSize:"2rem"}} />
+        <TwitterIcon
+          className={FormStyle.image}
+          sx={{ fontWeight: "700px", fontSize: "2rem" }}
+        />
       </div>
 
       <div className={FormStyle.container}>
-        <DialogTitle className={FormStyle.title} sx={{fontWeight:"900px", fontSize:"2rem"}}>
+        <DialogTitle
+          className={FormStyle.title}
+          sx={{ fontWeight: "900px", fontSize: "2rem" }}
+        >
           Sign in to Twitter
         </DialogTitle>
         <div className={FormStyle.btn1}>
@@ -155,7 +165,9 @@ export default function Form() {
           <CustomButton text="Sign in with Apple" />
         </div>
 
-        <h5 className={FormStyle.heading1}>-------------------------- or --------------------------</h5>
+        <h5 className={FormStyle.heading1}>
+          -------------------------- or --------------------------
+        </h5>
         <div className={FormStyle.in}>
           <CustomInputFields
             abc={placeholderEmail}

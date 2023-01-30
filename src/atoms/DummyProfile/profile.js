@@ -26,17 +26,20 @@ const CustomProfile = () => {
   const profile = customProfileArr;
 
   function handleClick() {
+    console.log(isDialogOpen)
     if (isDialogOpen) {
-      setIsDialogOpen(false);
-    } else {
-      setIsDialogOpen(true);
+      setIsDialogOpen(false);}
+    else {
+       setIsDialogOpen(true);
     }
   }
 
 function handleLogOut(){
-  localStorage.removeItem("userData")
-setLoggedIn({isUserLoggedIn:false})
-navigate("/signup")
+  
+setLoggedIn({...LoggedIn,isUserLoggedIn:false})
+console.log(LoggedIn.isUserLoggedIn)
+navigate("/")
+ localStorage.removeItem("userData")
 }
 
 

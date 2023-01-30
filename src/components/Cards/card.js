@@ -4,28 +4,48 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import Dialog from "@mui/material/Dialog";
 import CustomInputFields from "../../atoms/InputFields/input";
 import CustomButton from "../../atoms/button/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { tweetData } from "../../atom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue,useRecoilState } from "recoil";
+import defaultImage from './3.jpg';
 
 export default function Card() {
-  const [likes, setLikes] = useState(tweetData);
+  
+  const [likes, setLikes] = useRecoilState(tweetData);
+  console.log(likes, "===============================")
   
   
   const [isopenComment, setIsOpenComment] = useState(false);
   const [isViewOpen, setViewOpen] = useState(false);
-  const data=useRecoilValue(tweetData)
+  const [data,setData]=useRecoilState(tweetData)
 
+  const navigate = useNavigate()
+  const navigation = useNavigate()
  
 
+ 
+function handleProfileIcon(index,item){
+  console.log(item.handlerName)
+  
+ 
+
+  navigate(`/tweetProfile?handlerName=${item.handlerName}`)
+
+
+  
+
+}
   function handleLike(index,item) {
-    console.log(index)
+    // console.log(index)
+    // console.log(item)
     // console.log(item,"item")
-    const newLike=item.likesCount +1
+    item.tweets[0].likesCount += 1
+    const newLike=item.tweets[0]
     console.log(newLike)
     
     
-    setLikes({...likes,newLike})
+     setLikes({...likes,newLike})
+     console.log(likes,"after updates")
     // console.log(likes , "LIKES")
   }
 
@@ -42,6 +62,12 @@ export default function Card() {
   function handleDismiss() {
     setViewOpen(false);
   }
+  // function handleCard(item,index){
+  //   console.log(index,"card click")
+  //   navigation('/tweetReplies')
+
+
+  // }
 
     return (
         <>
@@ -122,11 +148,15 @@ export default function Card() {
 
  
     <div>
+      {/* {console.log(data)} */}
       {data.map((item,index) => (
         <div className={cardStyle.main}>
           <div className={cardStyle.navContainer}>
             <div className={cardStyle.container}>
+              
+              <div onClick={()=>handleProfileIcon(index,item)}>
               {item.profileIcon}
+              </div>
               <div className={cardStyle.name}>{item.name} </div>
               <VerifiedIcon />
               {item.handlerName}
@@ -135,28 +165,41 @@ export default function Card() {
             <div className={cardStyle.more}>{item.more}</div>
           </div>
           <div className={cardStyle.img_caption}>
-            <div className={cardStyle.caption}> {item.tweetText}</div>
+            <div className={cardStyle.caption}> {item.tweets[0].tweetText}</div>
             <div className={cardStyle.links}>{item.refLink} </div>
             <div className={cardStyle.hashtags}> {item.hastags}</div>
-            <img
-              src={item.tweetPic}
+            {
+              item.tweets[0].tweetPic ?
+
+              <img
+              src={item.tweets[0].tweetPic}
               alt="Image Here"
               className={cardStyle.img}
             />
+            : 
+            // null
+            <img
+              src={defaultImage}
+              alt="Image Here"
+              className={cardStyle.img}
+            />
+        
+            }
+            
           </div>
           <div className={cardStyle.icons}>
             <div onClick={handleComment}>{item.icons1}</div>
             <div>
               {item.icons2}
-              {item.retweetCount}
+              {item.tweets[0].retweetCount}
             </div>
             <div onClick={()=>handleLike(index,item)}>
               {item.icons3}
-              {item.likesCount} 
+              {item.tweets[0].likesCount} 
             </div>
             <div onClick={handleViews}>
               {item.icons4}
-              {item.viewsCount}
+              {item.tweets[0].viewsCount}
             </div>
             {item.icons5}
           </div>

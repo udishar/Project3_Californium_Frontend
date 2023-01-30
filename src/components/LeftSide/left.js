@@ -14,11 +14,24 @@ import Dialog from "@mui/material/Dialog";
 import CustomProfile from "../../atoms/DummyProfile/profile";
 import CustomInputFields from "../../atoms/InputFields/input";
 import Avatar from "@mui/material/Avatar";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import SwapCallsIcon from "@mui/icons-material/SwapCalls";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import GifBoxOutlinedIcon from "@mui/icons-material/GifBoxOutlined";
+import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { tweetData } from "../../atom";
 import { useRecoilState } from "recoil";
 import { profileAtom } from "../../atom";
+import img from "../LeftSide/Image/3.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Left() {
+  const navigate = useNavigate();
   const [isopen, setIsOpen] = useState(false);
   const [isProfile, setIsProfile] = useRecoilState(profileAtom);
 
@@ -33,15 +46,20 @@ function Left() {
   function handleClick() {
     console.log("clicked");
     const newTweet = {
-      profileIcon: (
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-      ),
+      profileIcon: <img src={img} className={leftStyle.img} />,
       name: "Udisha Arrawatia",
       handlerName: "@udisha_11",
-      tweetText: input,
+      tweets: [{ tweetText: input }],
+      icons1: <ChatBubbleOutlineIcon />,
+      icons2: <SwapCallsIcon />,
+      icons3: <FavoriteBorderIcon />,
+      icons4: <EqualizerIcon />,
+      icons5: <IosShareIcon />,
+      more: <MoreHorizIcon />,
     };
 
     setNewTweetText([newTweet, ...newTweetText]);
+    setInput("");
   }
   function handleClose() {
     setIsOpen(false);
@@ -85,13 +103,53 @@ function Left() {
     },
   ]);
 
-  function handleProfile(index) {
-    setIsProfile({ ...isProfile, isProfileOpen: true });
+  console.log(typeof list);
+
+  function handleProfile(index, item) {
+    // alert(item?.text);
+    const clicked = list.map((item) => item.text === "Profile");
+    console.log(clicked)
+    if (clicked[index] === true) {
+      // alert(isProfile.isProfileOpen);
+      setIsProfile({ ...isProfile, isProfileOpen: true });
+    }
+
+
+
+    const homeIndex = list.map((item) => item.text === "Home");
+
+    console.log(homeIndex);
+    if (homeIndex[index] === true) {
+      alert("triggred")
+      setIsProfile({ ...isProfile, isProfileOpen: false });
+    }
+  }
+
+  function handleIcon() {
+    setIsProfile({ ...isProfile, isProfileOpen: false });
   }
 
   function handleTweet() {
     setIsOpen(true);
   }
+  const iconList = [
+    {
+      icon: <CollectionsIcon className={leftStyle.icon} />,
+      action: "pickImage",
+    },
+    {
+      icon: <GifBoxOutlinedIcon className={leftStyle.icon} />,
+    },
+    {
+      icon: <ListOutlinedIcon className={leftStyle.icon} />,
+    },
+    {
+      icon: <EmojiEmotionsOutlinedIcon className={leftStyle.icon} />,
+    },
+    {
+      icon: <LocationOnOutlinedIcon className={leftStyle.icon} />,
+    },
+  ];
 
   return (
     <>
@@ -106,13 +164,19 @@ function Left() {
           }}
         >
           <div className={leftStyle.dailogTweet}>
-            <CustomInputFields
-              abc="Whats's happening?"
-              style={{ padding: "5rem", border: "none", outline: "none" }}
-              handleChange={handleNewTweet}
-              value={input}
-            />
+            <div className={leftStyle.top}>
+              <img src={img} className={leftStyle.img} />
+              <CustomInputFields
+                abc="Whats's happening?"
+                style={{ padding: "5rem", border: "none", outline: "none" }}
+                handleChange={handleNewTweet}
+                value={input}
+              />
+            </div>
             <div className={leftStyle.btn}>
+              {iconList.map(({ icon }) => (
+                <div> {icon}</div>
+              ))}
               <CustomButton
                 btnValue="Tweet"
                 style={{
@@ -142,14 +206,14 @@ function Left() {
 
       <div className={leftStyle.mainSectionContainer}>
         <section className={leftStyle.section1}>
-          <div className={leftStyle.twitterIcon}>
+          <div className={leftStyle.twitterIcon} onClick={handleIcon}>
             <TwitterIcon sx={{ fontWeight: "700px", fontSize: "2rem" }} />
           </div>
 
           {list.map((ele, index) => (
             <div
               className={leftStyle.div1}
-              onClick={() => handleProfile(index)}
+              onClick={() => handleProfile(index, ele)}
             >
               <div className={leftStyle.iconContainer}>
                 <div className={leftStyle.icons}>{ele.icon}</div>
