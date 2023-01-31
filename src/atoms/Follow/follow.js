@@ -56,9 +56,21 @@ export default function FollowList() {
       ),
     },
   ];
-  let listArr = list;
+  const [listArr,setListArr] = useState(list.slice(0,2));
+  const [isAskedforAllData,setIsAskedForAllData]=useState(false)
+  
+  
+  function handeClickShow(){
+    setIsAskedForAllData(!isAskedforAllData)
+    if(isAskedforAllData){
+      return setListArr(list.slice(0,2))
+    }
+    setListArr(list)
+  }
+
 
   return (
+    <>
     <div className={followStyle.Main}>
       {listArr.map((items, index) => (
         <div className={followStyle.container} key={items.name}>
@@ -76,5 +88,9 @@ export default function FollowList() {
         </div>
       ))}
     </div>
+    {
+      <div onClick={handeClickShow} className={followStyle.show}> {isAskedforAllData ? "Show Less" : "Show More"}</div> 
+    }
+    </>
   );
 }

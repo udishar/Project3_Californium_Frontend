@@ -102,3 +102,7 @@ padding:1rem;
     justify-content: space-between;
     margin-left: 3.5rem;
 }
+.imageWrapper{
+    max-height: 20rem;
+    overflow: auto;
+}

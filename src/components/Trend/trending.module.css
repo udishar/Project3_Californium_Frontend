@@ -15,10 +15,7 @@
     font-weight: 700;
     margin-bottom: 1rem;
 }
-.show{
-    color:rgb(42, 150, 228);
-    margin-bottom: 1rem;
-}
+
 .show:hover{
     background-color: rgb(193, 192, 192);
 }

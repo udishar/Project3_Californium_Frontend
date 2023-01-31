@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import CustomButton from "../../atoms/button/button";
 import CustomInputFields from "../../atoms/InputFields/input";
 import Card from "../Cards/card";
@@ -23,20 +23,29 @@ function Middle() {
   const [newTweetText, setNewTweetText] = useRecoilState(tweetData);
   
   const [input, setInput] = useState("");
+  const [image,setImage]=useState("")
   console.log(newTweetText);
+const inputRef = useRef(null)
+
+
+
 
   function handleNewTweet(inputTweet) {
     setInput(inputTweet);
   }
+  let userName = JSON.parse(localStorage.getItem("userData"));
   function handleClick() {
-    console.log("clicked");
+    // console.log("clicked");
     
     const newTweet = {
       profileIcon: <img src={img} className={middleStyle.img}/>,
-      name: "Udisha Arrawatia",
-      handlerName: "@udisha_11",
+      name:`${userName[0].phoneNumber}`,
+      handlerName: `@${userName[0].username}`,
   
-    tweets :[{tweetText:input}],
+    tweets :[
+      {tweetText:input,
+      tweetPic:image}
+    ],
       icons1:<ChatBubbleOutlineIcon/>,
             icons2:<SwapCallsIcon/>,
             icons3:<FavoriteBorderIcon/>,
@@ -44,9 +53,12 @@ function Middle() {
            icons5:<IosShareIcon/>,
            more:<MoreHorizIcon/>
     };
+    console.log(newTweet)
       
     setNewTweetText([newTweet, ...newTweetText]);
     setInput("")
+    setImage("")
+    inputRef.current.value=""
   }
   const iconList = [
     {
@@ -78,6 +90,22 @@ function Middle() {
         />
     }  
 ]
+function handleOnClickIcon(action){
+  // alert("hi")
+  if(action==='pickImage'){
+inputRef.current.click()
+  }
+
+}
+ function handleOnSelectImage(e){
+  let reader=new FileReader();
+  reader.onload=(e)=>{
+    setImage(e.target.result);
+    //inputRef.current=null
+  }
+  reader.readAsDataURL(e.target.files[0])
+
+ }
 
 
   return (
@@ -104,15 +132,27 @@ function Middle() {
               padding: "1rem",
               width: "30rem",
               border: "none",
+              fontSize:"1.6rem"
             }}
             handleChange={handleNewTweet}
             value={input}
           />
+          {
+            image && 
+            <div className={middleStyle.imageWrapper}>
+              <img 
+              src={image}
+              height="100%"
+              width="100%"
+              alt="IMAGE"
+              />
+            </div>
+          }
           </div>
           <div className={middleStyle.btn}>
             
-          {iconList.map(({icon})=>(
-             <div> {icon}</div>
+          {iconList.map(({icon,action},index)=>(
+             <div onClick={()=>handleOnClickIcon(action)}> {icon}</div>
             ))}
             <CustomButton
               btnVal="Tweet"
@@ -130,6 +170,15 @@ function Middle() {
           {/* </div> */}
          
           </div>
+          
+            {/* hidden input */}
+            <input
+                type = 'file'
+                hidden
+                ref={inputRef}
+                 onChange = {handleOnSelectImage}
+                name = 'tweetPic'
+            />
           
 
           <Card />

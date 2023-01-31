@@ -10,6 +10,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { profileAtom } from "../../atom";
 import { useRecoilState } from "recoil";
+import img from '../UserProfile/3.jpg'
 
 // import CustomInputFields from "../../atoms/InputFields/input";
 
@@ -19,6 +20,7 @@ function Profile() {
 function handleArrow(){
     setIsProfile({ ...isProfile, isProfileOpen:false });
 }
+let userName = JSON.parse(localStorage.getItem("userData"));
 
 
 
@@ -43,11 +45,11 @@ function handleArrow(){
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const [file, setFile] = useState();
-    function editProfile(e){
-        console.log("clickimg")
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }useEffect(()=>{},[])
+    // const [file, setFile] = useState();
+    // function editProfile(e){
+    //     console.log("clickimg")
+    //     setFile(URL.createObjectURL(e.target.files[0]));
+    // }useEffect(()=>{},[])
 
     return (
         <div className={profileStyle.container}>
@@ -55,7 +57,7 @@ function handleArrow(){
                 <div className={profileStyle.top}>
                     <div onClick={handleArrow}><ArrowBackIcon /></div>
                     
-                    <h3>Udisha Arrawatia</h3>
+                    <h3>{userName[0].username}</h3>
                     <h6>0 tweets</h6>
                 </div>
                 <div className={profileStyle.maintop}>
@@ -64,14 +66,14 @@ function handleArrow(){
                 <div className={profileStyle.mainbottom}>
 
                     <div>
-                        <img src={file} 
+                        <img src={img} 
                             style={{ width: "130px", height: "130px", border: "4px solid white", backgroundColor: "rgb(18, 80, 48)",
                                      borderRadius:"50%" }}
                             />
                     </div>
 
-                    <h3><b>Udisha Arrawatia</b></h3>
-                    <h5>@udisha_11</h5>
+                    <h3><b>{userName[0].phoneNumber}</b></h3>
+                    <h5>{userName[0].username}</h5>
                     <div className={profileStyle.calender}><CalendarMonthIcon /><h6>joined january 2023</h6></div>
                     <h6><b>186</b> Following  <b>188</b> Followers</h6>
                     <CustomButton text="Edit profile"
@@ -80,7 +82,7 @@ function handleArrow(){
                             borderRadius: "20px", width: "7rem", marginTop: "0rem",
                             marginLeft: "32rem"
                         }}
-                        type="file" handleChange={editProfile}
+                        type="file" 
                     />
                 </div>
                 <Box sx={{ width: '100%' }}>

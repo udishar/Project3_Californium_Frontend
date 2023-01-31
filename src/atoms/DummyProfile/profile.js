@@ -12,15 +12,16 @@ const CustomProfile = () => {
   const [LoggedIn,setLoggedIn] = useRecoilState(userInfo)
 
   let navigate =useNavigate();
-  
+
+  let userName = JSON.parse(localStorage.getItem("userData"));
   let customProfileArr = [
     {
       image: (
         <img src={img} alt="Image here" className={profileStyle.imgStyle} />
       ),
-      name: "Udisha Arrawatia",
-      handlerName: "@udisha_11",
-      icon: <MoreHorizIcon />,
+      name:`${userName[0].phoneNumber}`,
+      handlerName: `@${userName[0].username}`,
+           icon: <MoreHorizIcon />,
     },
   ];
   const profile = customProfileArr;
@@ -57,9 +58,10 @@ navigate("/")
           padding:"0.5em"
         },
       }}>
+       
         <div className={profileStyle.headings}>
         <h4 className={profileStyle.h1}>Add an existing account</h4>
-        <h4 className={profileStyle.h2} onClick={handleLogOut}> Log out @udisha_11 </h4>
+        <h4 className={profileStyle.h2} onClick={handleLogOut}> Log out  </h4>
         </div>
       </Dialog> : ""}
       

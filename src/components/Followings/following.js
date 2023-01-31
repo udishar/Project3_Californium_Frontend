@@ -9,7 +9,7 @@ export default function Following() {
       <div>
         <FollowList />
       </div>
-      <div className={style.show}>Show more</div>
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import leftStyle from "../LeftSide/left.module.css";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import HomeIcon from "@mui/icons-material/Home";
@@ -13,7 +13,7 @@ import CustomButton from "../../atoms/button/button";
 import Dialog from "@mui/material/Dialog";
 import CustomProfile from "../../atoms/DummyProfile/profile";
 import CustomInputFields from "../../atoms/InputFields/input";
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import SwapCallsIcon from "@mui/icons-material/SwapCalls";
@@ -37,19 +37,23 @@ function Left() {
 
   const [newTweetText, setNewTweetText] = useRecoilState(tweetData);
   const [input, setInput] = useState("");
-  console.log(newTweetText);
+  const [image, setImage] = useState("");
+
+  const inputRef = useRef(null);
+  // console.log(inputRef);
 
   function handleNewTweet(inputTweet) {
     setInput(inputTweet);
     console.log(inputTweet);
   }
+  let userName = JSON.parse(localStorage.getItem("userData"));
   function handleClick() {
     console.log("clicked");
     const newTweet = {
       profileIcon: <img src={img} className={leftStyle.img} />,
-      name: "Udisha Arrawatia",
-      handlerName: "@udisha_11",
-      tweets: [{ tweetText: input }],
+      name: `${userName[0].phoneNumber}`,
+      handlerName: `@${userName[0].username}`,
+      tweets: [{ tweetText: input, tweetPic: image }],
       icons1: <ChatBubbleOutlineIcon />,
       icons2: <SwapCallsIcon />,
       icons3: <FavoriteBorderIcon />,
@@ -60,6 +64,8 @@ function Left() {
 
     setNewTweetText([newTweet, ...newTweetText]);
     setInput("");
+    setImage("");
+    inputRef.current.value = "";
   }
   function handleClose() {
     setIsOpen(false);
@@ -103,24 +109,22 @@ function Left() {
     },
   ]);
 
-  console.log(typeof list);
+ 
 
   function handleProfile(index, item) {
-    // alert(item?.text);
+    
     const clicked = list.map((item) => item.text === "Profile");
-    console.log(clicked)
+    console.log(clicked);
     if (clicked[index] === true) {
-      // alert(isProfile.isProfileOpen);
+      
       setIsProfile({ ...isProfile, isProfileOpen: true });
     }
-
-
 
     const homeIndex = list.map((item) => item.text === "Home");
 
     console.log(homeIndex);
     if (homeIndex[index] === true) {
-      alert("triggred")
+      // alert("triggred")
       setIsProfile({ ...isProfile, isProfileOpen: false });
     }
   }
@@ -150,6 +154,19 @@ function Left() {
       icon: <LocationOnOutlinedIcon className={leftStyle.icon} />,
     },
   ];
+  function handleOnClickIcon(action) {
+    if (action === "pickImage") {
+      inputRef.current.click();
+    }
+  }
+  function handleOnSelectImage(e) {
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      setImage(e.target.result);
+      //inputRef.current=null
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  }
 
   return (
     <>
@@ -168,14 +185,24 @@ function Left() {
               <img src={img} className={leftStyle.img} />
               <CustomInputFields
                 abc="Whats's happening?"
-                style={{ padding: "5rem", border: "none", outline: "none" }}
+                style={{
+                  padding: "3rem",
+                  border: "none",
+                  outline: "none",
+                  fontSize: "1.6rem",
+                }}
                 handleChange={handleNewTweet}
                 value={input}
               />
+              {image && (
+                <div className={leftStyle.imageWrapper}>
+                  <img src={image} height="100%" width="100%" alt="IMAGE" />
+                </div>
+              )}
             </div>
             <div className={leftStyle.btn}>
-              {iconList.map(({ icon }) => (
-                <div> {icon}</div>
+              {iconList.map(({ icon, action }, index) => (
+                <div onClick={() => handleOnClickIcon(action)}> {icon}</div>
               ))}
               <CustomButton
                 btnValue="Tweet"
@@ -191,6 +218,15 @@ function Left() {
                 onClicking={handleClick}
               />
             </div>
+
+            {/* hidden input */}
+            <input
+              type="file"
+              hidden
+              ref={inputRef}
+              onChange={handleOnSelectImage}
+              name="tweetPic"
+            />
             <div className={leftStyle.close}>
               <CustomButton
                 btnValue="close"

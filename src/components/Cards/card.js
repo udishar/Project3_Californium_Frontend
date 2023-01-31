@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cardStyle from "../Cards/card.module.css";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Dialog from "@mui/material/Dialog";
@@ -7,17 +7,17 @@ import CustomButton from "../../atoms/button/button";
 import { Link, useNavigate } from "react-router-dom";
 import { tweetData } from "../../atom";
 import { useRecoilValue,useRecoilState } from "recoil";
-import defaultImage from './3.jpg';
+// import defaultImage from './3.jpg';
 
 export default function Card() {
-  
-  const [likes, setLikes] = useRecoilState(tweetData);
+  const [data,setData]=useRecoilState(tweetData)
+  const [likes, setLikes] = useState(100);
   console.log(likes, "===============================")
   
   
   const [isopenComment, setIsOpenComment] = useState(false);
   const [isViewOpen, setViewOpen] = useState(false);
-  const [data,setData]=useRecoilState(tweetData)
+ 
 
   const navigate = useNavigate()
   const navigation = useNavigate()
@@ -35,18 +35,17 @@ function handleProfileIcon(index,item){
   
 
 }
+
   function handleLike(index,item) {
-    // console.log(index)
-    // console.log(item)
-    // console.log(item,"item")
-    item.tweets[0].likesCount += 1
-    const newLike=item.tweets[0]
-    console.log(newLike)
+    // console.log("hi")
+    if(likes==101){
+      setLikes(likes-1)
+    }
+    else{
+      setLikes(likes+1)
+    }
+    // console.log(likes)
     
-    
-     setLikes({...likes,newLike})
-     console.log(likes,"after updates")
-    // console.log(likes , "LIKES")
   }
 
   function handleViews() {
@@ -177,12 +176,12 @@ function handleProfileIcon(index,item){
               className={cardStyle.img}
             />
             : 
-            // null
-            <img
-              src={defaultImage}
-              alt="Image Here"
-              className={cardStyle.img}
-            />
+             null
+            // <img
+            //   src={defaultImage}
+            //   alt="Image Here"
+            //   className={cardStyle.img}
+            // />
         
             }
             
@@ -195,7 +194,7 @@ function handleProfileIcon(index,item){
             </div>
             <div onClick={()=>handleLike(index,item)}>
               {item.icons3}
-              {item.tweets[0].likesCount} 
+              {likes}
             </div>
             <div onClick={handleViews}>
               {item.icons4}
