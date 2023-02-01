@@ -3,7 +3,6 @@ import CustomButton from "../../atoms/button/button";
 import CustomInputFields from "../../atoms/InputFields/input";
 import Card from "../Cards/card";
 import middleStyle from "../Middle/middle.module.css";
-import Avatar from "@mui/material/Avatar";
 import { tweetData } from "../../atom";
 import { useRecoilState } from "recoil";
 import CollectionsIcon from '@mui/icons-material/Collections';
@@ -21,19 +20,17 @@ import img from '../Middle/imagee/3.jpg'
 
 function Middle() {
   const [newTweetText, setNewTweetText] = useRecoilState(tweetData);
-  
-  const [input, setInput] = useState("");
+ const [input, setInput] = useState("");
   const [image,setImage]=useState("")
+
   console.log(newTweetText);
 const inputRef = useRef(null)
 
-
-
-
-  function handleNewTweet(inputTweet) {
+function handleNewTweet(inputTweet) {
     setInput(inputTweet);
   }
   let userName = JSON.parse(localStorage.getItem("userData"));
+
   function handleClick() {
     // console.log("clicked");
     
@@ -43,8 +40,10 @@ const inputRef = useRef(null)
       handlerName: `@${userName[0].username}`,
   
     tweets :[
-      {tweetText:input,
-      tweetPic:image}
+      {
+        tweetText:input,
+      tweetPic:image
+    }
     ],
       icons1:<ChatBubbleOutlineIcon/>,
             icons2:<SwapCallsIcon/>,
@@ -60,6 +59,7 @@ const inputRef = useRef(null)
     setImage("")
     inputRef.current.value=""
   }
+  console.log(newTweetText,"kuch bhi")
   const iconList = [
     {
         icon : <CollectionsIcon

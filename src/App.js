@@ -6,6 +6,7 @@ import Register from "./components/Register/Register";
 import Home from "./components/Home/home";
 import TweetProfile from "./components/TweetProfile/tweetProfile";
 import ShowTweetReplies from "./components/TweetReply/tweetReplies";
+import Profile from "./components/UserProfile/userprofile";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,6 +38,10 @@ function App() {
     {
       path:"/tweetReplies",
       element:<ShowTweetReplies/>
+    },
+    {
+      path:"/userProfile",
+      element:<Profile/>
     }
   ]);
 

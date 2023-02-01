@@ -26,15 +26,12 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { tweetData } from "../../atom";
 import { useRecoilState } from "recoil";
-import { profileAtom } from "../../atom";
 import img from "../LeftSide/Image/3.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Left() {
   const navigate = useNavigate();
   const [isopen, setIsOpen] = useState(false);
-  const [isProfile, setIsProfile] = useRecoilState(profileAtom);
-
   const [newTweetText, setNewTweetText] = useRecoilState(tweetData);
   const [input, setInput] = useState("");
   const [image, setImage] = useState("");
@@ -117,20 +114,21 @@ function Left() {
     console.log(clicked);
     if (clicked[index] === true) {
       
-      setIsProfile({ ...isProfile, isProfileOpen: true });
+      navigate('/userProfile')
     }
 
     const homeIndex = list.map((item) => item.text === "Home");
 
     console.log(homeIndex);
     if (homeIndex[index] === true) {
-      // alert("triggred")
-      setIsProfile({ ...isProfile, isProfileOpen: false });
+      
+      navigate("/")
     }
   }
 
   function handleIcon() {
-    setIsProfile({ ...isProfile, isProfileOpen: false });
+    
+    navigate("/")
   }
 
   function handleTweet() {

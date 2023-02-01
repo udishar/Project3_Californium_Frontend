@@ -105,3 +105,9 @@ color:rgb(155, 151, 151);
     font-weight: 700;
     margin-left: 0.5rem;
 }
+.component{
+    display: flex;
+    align-items: flex-start;
+    justify-content:space-between;
+
+}

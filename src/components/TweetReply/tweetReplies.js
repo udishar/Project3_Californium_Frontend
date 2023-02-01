@@ -1,27 +1,56 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { useRecoilState } from 'recoil'
 import { tweetData } from '../../atom'
 import style from '../TweetReply/tweetReply.module.css'
 import VerifiedIcon from "@mui/icons-material/Verified"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import Left from '../LeftSide/left'
+import Right from '../Right/right'
 
 export default function ShowTweetReplies(){
 const [dataList, setDataList]=useRecoilState(tweetData)
-    
-function handleLike(){
+const [searchParam] = useSearchParams();
+const [activeProfile,setActiveProfile] =useState([])
+const [likes, setLikes] = useState(100);
+const navigate=useNavigate()
 
-}
+useEffect(()=>{
+  console.log(searchParam.get("handlerName"))
+  let clickingIndex=dataList.filter((ele)=>ele.handlerName == searchParam.get("handlerName"))
+  console.log(clickingIndex)
+  setActiveProfile(clickingIndex)
+},[])
+    
+
+  function handleLike(index,item) {
+    // console.log("hi")
+    if(likes==101){
+      setLikes(likes-1)
+    }
+    else{
+      setLikes(likes+1)
+    }
+    // console.log(likes)
+    
+  }
+
+
 function handleViews(){
     
 }
+function handleIcon(){
+navigate("/")
+}
     return(
         <>
-        {dataList.map((item,index)=>(
-            <div>
-            
+       
+        {activeProfile.map((item,index)=>(
+            <div className={style.component}>
+             <Left/>
             <div className={style.main} >
                 <div className={style.head}>
-                <div><ArrowBackIcon/></div>
+                <div onClick={handleIcon}><ArrowBackIcon/></div>
             <h2 className={style.heading}>Tweet</h2>
             </div>
           <div className={style.navContainer}>
@@ -78,8 +107,10 @@ function handleViews(){
           {item.tweets[0].TweetReplies[1].tweetReplyText}
           </div>
         </div>
+        <Right/>  
             </div>
-        ))}     
+        ))}   
+        
         </>
     )
 }

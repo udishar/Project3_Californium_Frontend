@@ -8,17 +8,20 @@ import Box from '@mui/material/Box';
 import CustomButton from "../../atoms/button/button";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { profileAtom } from "../../atom";
-import { useRecoilState } from "recoil";
 import img from '../UserProfile/3.jpg'
+import { useNavigate } from "react-router-dom";
+import Left from "../LeftSide/left";
+import Right from "../Right/right";
 
 // import CustomInputFields from "../../atoms/InputFields/input";
 
 function Profile() {
-    const [isProfile, setIsProfile] = useRecoilState(profileAtom);
+    
+   const navigate= useNavigate()
     
 function handleArrow(){
-    setIsProfile({ ...isProfile, isProfileOpen:false });
+   
+    navigate("/")
 }
 let userName = JSON.parse(localStorage.getItem("userData"));
 
@@ -53,6 +56,7 @@ let userName = JSON.parse(localStorage.getItem("userData"));
 
     return (
         <div className={profileStyle.container}>
+            <Left/>
             <section className={profileStyle.section}>
                 <div className={profileStyle.top}>
                     <div onClick={handleArrow}><ArrowBackIcon /></div>
@@ -120,6 +124,7 @@ let userName = JSON.parse(localStorage.getItem("userData"));
                     </TabPanel>
                 </Box>
             </section>
+            <Right/>
         </div>
     );
 };

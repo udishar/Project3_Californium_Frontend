@@ -19,11 +19,13 @@ const CustomProfile = () => {
       image: (
         <img src={img} alt="Image here" className={profileStyle.imgStyle} />
       ),
-      name:`${userName[0].phoneNumber}`,
+      name:userName[0].phoneNumber,
+     
       handlerName: `@${userName[0].username}`,
            icon: <MoreHorizIcon />,
     },
   ];
+console.log(customProfileArr)
   const profile = customProfileArr;
 
   function handleClick() {
@@ -40,7 +42,7 @@ function handleLogOut(){
 setLoggedIn({...LoggedIn,isUserLoggedIn:false})
 console.log(LoggedIn.isUserLoggedIn)
 navigate("/")
- localStorage.removeItem("userData")
+
 }
 
 
@@ -61,7 +63,7 @@ navigate("/")
        
         <div className={profileStyle.headings}>
         <h4 className={profileStyle.h1}>Add an existing account</h4>
-        <h4 className={profileStyle.h2} onClick={handleLogOut}> Log out  </h4>
+        <h4 className={profileStyle.h2} onClick={handleLogOut}> Log out </h4>
         </div>
       </Dialog> : ""}
       

@@ -65,6 +65,33 @@ export const tweetData =atom({
 
               ]
           },
+          {
+            tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+            tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+            tweetCount : 100,
+            retweetCount : 100 ,
+            likesCount : 100,
+            viewsCount : '102k',
+            TweetReplies : [
+                {
+                  profileIcon: (
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  ),
+                    name : 'vijaya sharma',
+                    handlerName : '@sharma545',
+                    tweetReplyText : 'it is nice'
+                },
+                {
+                  profileIcon: (
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  ),
+                    name : 'saniya mirza',
+                    handlerName : '@mirza',
+                    tweetReplyText : 'that is very intersting'
+                },
+
+            ]
+        },
        
       ],
     },
@@ -116,7 +143,33 @@ export const tweetData =atom({
                     },
   
                 ]
-            },
+            },{
+              tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+              tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+              tweetCount : 100,
+              retweetCount : 100 ,
+              likesCount : 100,
+              viewsCount : '102k',
+              TweetReplies : [
+                  {
+                    profileIcon: (
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    ),
+                      name : 'vijaya sharma',
+                      handlerName : '@sharma545',
+                      tweetReplyText : 'it is nice'
+                  },
+                  {
+                    profileIcon: (
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    ),
+                      name : 'saniya mirza',
+                      handlerName : '@mirza',
+                      tweetReplyText : 'that is very intersting'
+                  },
+  
+              ]
+          },
            
         ],
       },
@@ -169,6 +222,33 @@ export const tweetData =atom({
   
                 ]
             },
+            {
+              tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+              tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+              tweetCount : 100,
+              retweetCount : 100 ,
+              likesCount : 100,
+              viewsCount : '102k',
+              TweetReplies : [
+                  {
+                    profileIcon: (
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    ),
+                      name : 'vijaya sharma',
+                      handlerName : '@sharma545',
+                      tweetReplyText : 'it is nice'
+                  },
+                  {
+                    profileIcon: (
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    ),
+                      name : 'saniya mirza',
+                      handlerName : '@mirza',
+                      tweetReplyText : 'that is very intersting'
+                  },
+  
+              ]
+          },
           
         ],
       },
@@ -222,6 +302,33 @@ export const tweetData =atom({
   
                 ]
             },
+            {
+              tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+              tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+              tweetCount : 100,
+              retweetCount : 100 ,
+              likesCount : 100,
+              viewsCount : '102k',
+              TweetReplies : [
+                  {
+                    profileIcon: (
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    ),
+                      name : 'vijaya sharma',
+                      handlerName : '@sharma545',
+                      tweetReplyText : 'it is nice'
+                  },
+                  {
+                    profileIcon: (
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    ),
+                      name : 'saniya mirza',
+                      handlerName : '@mirza',
+                      tweetReplyText : 'that is very intersting'
+                  },
+  
+              ]
+          },
            
         ],
       },
@@ -274,6 +381,33 @@ export const tweetData =atom({
 
               ]
           },
+          {
+            tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+            tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+            tweetCount : 100,
+            retweetCount : 100 ,
+            likesCount : 100,
+            viewsCount : '102k',
+            TweetReplies : [
+                {
+                  profileIcon: (
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  ),
+                    name : 'vijaya sharma',
+                    handlerName : '@sharma545',
+                    tweetReplyText : 'it is nice'
+                },
+                {
+                  profileIcon: (
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  ),
+                    name : 'saniya mirza',
+                    handlerName : '@mirza',
+                    tweetReplyText : 'that is very intersting'
+                },
+
+            ]
+        },
          
       ],
     },
@@ -324,6 +458,33 @@ export const tweetData =atom({
 
               ]
           },
+          {
+            tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+            tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+            tweetCount : 100,
+            retweetCount : 100 ,
+            likesCount : 100,
+            viewsCount : '102k',
+            TweetReplies : [
+                {
+                  profileIcon: (
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  ),
+                    name : 'vijaya sharma',
+                    handlerName : '@sharma545',
+                    tweetReplyText : 'it is nice'
+                },
+                {
+                  profileIcon: (
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  ),
+                    name : 'saniya mirza',
+                    handlerName : '@mirza',
+                    tweetReplyText : 'that is very intersting'
+                },
+
+            ]
+        },
          
       ],
     },
@@ -372,6 +533,33 @@ export const tweetData =atom({
 
             ]
         },
+        {
+          tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+          tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+          tweetCount : 100,
+          retweetCount : 100 ,
+          likesCount : 100,
+          viewsCount : '102k',
+          TweetReplies : [
+              {
+                profileIcon: (
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                ),
+                  name : 'vijaya sharma',
+                  handlerName : '@sharma545',
+                  tweetReplyText : 'it is nice'
+              },
+              {
+                profileIcon: (
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                ),
+                  name : 'saniya mirza',
+                  handlerName : '@mirza',
+                  tweetReplyText : 'that is very intersting'
+              },
+
+          ]
+      },
        
       ],
     },
@@ -421,6 +609,33 @@ export const tweetData =atom({
 
            ]
        },
+       {
+        tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+        tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+        tweetCount : 100,
+        retweetCount : 100 ,
+        likesCount : 100,
+        viewsCount : '102k',
+        TweetReplies : [
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'vijaya sharma',
+                handlerName : '@sharma545',
+                tweetReplyText : 'it is nice'
+            },
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'saniya mirza',
+                handlerName : '@mirza',
+                tweetReplyText : 'that is very intersting'
+            },
+
+        ]
+    },
       
       ],
     },
@@ -470,6 +685,33 @@ export const tweetData =atom({
 
            ]
        },
+       {
+        tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+        tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+        tweetCount : 100,
+        retweetCount : 100 ,
+        likesCount : 100,
+        viewsCount : '102k',
+        TweetReplies : [
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'vijaya sharma',
+                handlerName : '@sharma545',
+                tweetReplyText : 'it is nice'
+            },
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'saniya mirza',
+                handlerName : '@mirza',
+                tweetReplyText : 'that is very intersting'
+            },
+
+        ]
+    },
       
       ],
     },
@@ -521,6 +763,33 @@ export const tweetData =atom({
 
            ]
        },
+       {
+        tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+        tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+        tweetCount : 100,
+        retweetCount : 100 ,
+        likesCount : 100,
+        viewsCount : '102k',
+        TweetReplies : [
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'vijaya sharma',
+                handlerName : '@sharma545',
+                tweetReplyText : 'it is nice'
+            },
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'saniya mirza',
+                handlerName : '@mirza',
+                tweetReplyText : 'that is very intersting'
+            },
+
+        ]
+    },
       
       ],
     },
@@ -572,6 +841,33 @@ export const tweetData =atom({
 
            ]
        },
+       {
+        tweetText : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+        tweetPic : "https://lh3.googleusercontent.com/KdBVQy9qYOUvkWIAZVU0xxiCSfHlSIyxubAi_fDQguitxEOSbHdJS0nhZ5XxVuhggFIGnyWfQd6e_THednJT0r1dYMabudzArp8mimZxguSM4iHTodAVCxaf3TqPKl3Lk4HJ2wR1zQ=w1920-h1080",
+        tweetCount : 100,
+        retweetCount : 100 ,
+        likesCount : 100,
+        viewsCount : '102k',
+        TweetReplies : [
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'vijaya sharma',
+                handlerName : '@sharma545',
+                tweetReplyText : 'it is nice'
+            },
+            {
+              profileIcon: (
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              ),
+                name : 'saniya mirza',
+                handlerName : '@mirza',
+                tweetReplyText : 'that is very intersting'
+            },
+
+        ]
+    },
       
       ],
     },

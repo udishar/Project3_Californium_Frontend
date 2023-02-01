@@ -12,7 +12,7 @@ import { useRecoilValue,useRecoilState } from "recoil";
 export default function Card() {
   const [data,setData]=useRecoilState(tweetData)
   const [likes, setLikes] = useState(100);
-  console.log(likes, "===============================")
+  // console.log(likes, "===============================")
   
   
   const [isopenComment, setIsOpenComment] = useState(false);
@@ -20,20 +20,12 @@ export default function Card() {
  
 
   const navigate = useNavigate()
-  const navigation = useNavigate()
- 
+
 
  
 function handleProfileIcon(index,item){
-  console.log(item.handlerName)
-  
- 
-
-  navigate(`/tweetProfile?handlerName=${item.handlerName}`)
-
-
-  
-
+  // console.log(item.handlerName)
+    navigate(`/tweetProfile?handlerName=${item.handlerName}`)
 }
 
   function handleLike(index,item) {
@@ -61,13 +53,9 @@ function handleProfileIcon(index,item){
   function handleDismiss() {
     setViewOpen(false);
   }
-  // function handleCard(item,index){
-  //   console.log(index,"card click")
-  //   navigation('/tweetReplies')
-
-
-  // }
-
+  function handleTweet(index,item){
+    navigate(`/tweetReplies?handlerName=${item.handlerName}`)
+  }
     return (
         <>
         {isViewOpen ?
@@ -147,7 +135,7 @@ function handleProfileIcon(index,item){
 
  
     <div>
-      {/* {console.log(data)} */}
+      {console.log(data,"from card")}
       {data.map((item,index) => (
         <div className={cardStyle.main}>
           <div className={cardStyle.navContainer}>
@@ -163,6 +151,7 @@ function handleProfileIcon(index,item){
 
             <div className={cardStyle.more}>{item.more}</div>
           </div>
+          <div className={cardStyle.component2} onClick={()=>handleTweet(index,item)}>
           <div className={cardStyle.img_caption}>
             <div className={cardStyle.caption}> {item.tweets[0].tweetText}</div>
             <div className={cardStyle.links}>{item.refLink} </div>
@@ -177,13 +166,10 @@ function handleProfileIcon(index,item){
             />
             : 
              null
-            // <img
-            //   src={defaultImage}
-            //   alt="Image Here"
-            //   className={cardStyle.img}
-            // />
+          
         
             }
+            </div>
             
           </div>
           <div className={cardStyle.icons}>
@@ -201,7 +187,8 @@ function handleProfileIcon(index,item){
               {item.tweets[0].viewsCount}
             </div>
             {item.icons5}
-          </div>
+            </div>
+          
         </div>
       ))}
     </div>
