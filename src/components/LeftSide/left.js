@@ -112,9 +112,11 @@ function Left() {
     
     const clicked = list.map((item) => item.text === "Profile");
     console.log(clicked);
+
     if (clicked[index] === true) {
       
-      navigate('/userProfile')
+      // navigate('/userProfile')
+      navigate(`/userProfile?handlerName=${`@${userName[0].username}`}`)
     }
 
     const homeIndex = list.map((item) => item.text === "Home");

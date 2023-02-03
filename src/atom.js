@@ -6,6 +6,7 @@ import SwapCallsIcon from "@mui/icons-material/SwapCalls";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import {nanoid} from 'nanoid'
 
 export const userInfo = atom({
   key: "userInfo",
@@ -13,7 +14,10 @@ export const userInfo = atom({
 });
 
 
-
+export const updatedActiveProfile=atom({
+  key:"updatedActiveProfile",
+  default:[]
+})
 
 
 export const tweetData =atom({ 
@@ -21,7 +25,7 @@ export const tweetData =atom({
   default:[
   {
 
-
+        id:nanoid(),
     profileIcon: (
               <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg"  />
             ),
@@ -99,6 +103,7 @@ export const tweetData =atom({
 
   
     {
+      id:nanoid(),
       profileIcon: (
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
       ),
@@ -178,6 +183,7 @@ export const tweetData =atom({
 
   
     {
+      id:nanoid(),
       profileIcon: (
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
       ),
@@ -257,6 +263,7 @@ export const tweetData =atom({
 
   
     {
+      id:nanoid(),
       profileIcon: (
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
       ),
@@ -336,6 +343,7 @@ export const tweetData =atom({
 
 
   {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),
@@ -414,6 +422,7 @@ export const tweetData =atom({
 
 
   {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),
@@ -490,6 +499,7 @@ export const tweetData =atom({
     },
 
    {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),
@@ -566,6 +576,7 @@ export const tweetData =atom({
 
 
   {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),
@@ -642,6 +653,7 @@ export const tweetData =atom({
 
 
   {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),
@@ -718,6 +730,7 @@ export const tweetData =atom({
 
 
   {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),
@@ -796,6 +809,7 @@ export const tweetData =atom({
 
  
   {
+    id:nanoid(),
     profileIcon: (
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
     ),

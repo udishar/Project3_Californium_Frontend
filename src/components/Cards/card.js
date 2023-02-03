@@ -5,29 +5,61 @@ import Dialog from "@mui/material/Dialog";
 import CustomInputFields from "../../atoms/InputFields/input";
 import CustomButton from "../../atoms/button/button";
 import { Link, useNavigate } from "react-router-dom";
-import { tweetData } from "../../atom";
+import { tweetData , updatedActiveProfile} from "../../atom";
 import { useRecoilValue,useRecoilState } from "recoil";
+import img from '../Cards/3.jpg'
 // import defaultImage from './3.jpg';
 
 export default function Card() {
   const [data,setData]=useRecoilState(tweetData)
   const [likes, setLikes] = useState(100);
-  // console.log(likes, "===============================")
+  const[input , setInput] = useState("")
+  const [updateActiveData, setUpdateActiveData]=useRecoilState(updatedActiveProfile)
+
   
   
   const [isopenComment, setIsOpenComment] = useState(false);
   const [isViewOpen, setViewOpen] = useState(false);
+  const [clickedIndex, setClickedIndex]=useState("")
  
 
   const navigate = useNavigate()
 
+useEffect(()=>{ console.log("useEffect running")},[updateActiveData])
 
  
 function handleProfileIcon(index,item){
   // console.log(item.handlerName)
-    navigate(`/tweetProfile?handlerName=${item.handlerName}`)
-}
+  // const updatedData= updateActiveData.splice(index,1)
+  // setUpdateActiveData([...updatedData])
+  console.log(updateActiveData, "===============================")
 
+     navigate(`/tweetProfile?id=${item.id}`)
+    // navigate(`/tweetProfile?handlerName=${item.index}`)
+}
+let userName = JSON.parse(localStorage.getItem("userData"));
+ function addReply(){
+  const newReply=[{
+    
+    
+    
+      profileIcon: <img src={img} className={cardStyle.img}/>,
+     name:`${userName[0].phoneNumber}`,
+     handlerName: `@${userName[0].username}`,
+    tweetReplyText: input
+  
+    
+  }]
+    console.log(newReply)
+    setInput("")
+   const newData= data[clickedIndex].tweets.map((item)=>item.TweetReplies)
+   console.log([...newData,newReply], "after spreading")
+    // setData([newReply,...newData])
+    // console.log(newData , "hihihihi")
+
+  }
+   
+  
   function handleLike(index,item) {
     // console.log("hi")
     if(likes==101){
@@ -43,10 +75,17 @@ function handleProfileIcon(index,item){
   function handleViews() {
     setViewOpen(true);
   }
-
-  function handleComment() {
+console.log(clickedIndex,"CLICKEDindex")
+  function handleComment(index) {
+    setClickedIndex(index)
     setIsOpenComment(true);
   }
+
+  function handleReply(inputReply){
+console.log(inputReply)
+setInput(inputReply)
+  }
+
   function handleClose() {
     setIsOpenComment(false);
   }
@@ -54,7 +93,9 @@ function handleProfileIcon(index,item){
     setViewOpen(false);
   }
   function handleTweet(index,item){
-    navigate(`/tweetReplies?handlerName=${item.handlerName}`)
+    // data.splice(index,1)
+    navigate(`/tweetReplies?id=${item.id}`)
+
   }
     return (
         <>
@@ -112,6 +153,8 @@ function handleProfileIcon(index,item){
               outline: "none",
               fontSize: "1.5rem",
             }}
+            handleChange={handleReply}
+               value={input}
           />
           <div className={cardStyle.btn}>
             <CustomButton
@@ -122,6 +165,7 @@ function handleProfileIcon(index,item){
                 width: "7rem",
                 borderRadius: "20px",
               }}
+               onClicking={addReply}
             />
           </div>
           <CustomButton
@@ -173,7 +217,7 @@ function handleProfileIcon(index,item){
             
           </div>
           <div className={cardStyle.icons}>
-            <div onClick={handleComment}>{item.icons1}</div>
+            <div onClick={()=>handleComment(index)}>{item.icons1}</div>
             <div>
               {item.icons2}
               {item.tweets[0].retweetCount}

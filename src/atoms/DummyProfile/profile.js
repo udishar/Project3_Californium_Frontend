@@ -25,7 +25,7 @@ const CustomProfile = () => {
            icon: <MoreHorizIcon />,
     },
   ];
-console.log(customProfileArr)
+// console.log(customProfileArr)
   const profile = customProfileArr;
 
   function handleClick() {
@@ -40,7 +40,7 @@ console.log(customProfileArr)
 function handleLogOut(){
   
 setLoggedIn({...LoggedIn,isUserLoggedIn:false})
-console.log(LoggedIn.isUserLoggedIn)
+// console.log(LoggedIn.isUserLoggedIn)
 navigate("/")
 
 }

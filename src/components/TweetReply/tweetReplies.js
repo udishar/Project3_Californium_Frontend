@@ -17,7 +17,7 @@ const navigate=useNavigate()
 
 useEffect(()=>{
   console.log(searchParam.get("handlerName"))
-  let clickingIndex=dataList.filter((ele)=>ele.handlerName == searchParam.get("handlerName"))
+  let clickingIndex=dataList.filter((ele)=>ele.id == searchParam.get("id"))
   console.log(clickingIndex)
   setActiveProfile(clickingIndex)
 },[])
@@ -43,74 +43,61 @@ function handleIcon(){
 navigate("/")
 }
     return(
-        <>
-       
-        {activeProfile.map((item,index)=>(
-            <div className={style.component}>
-             <Left/>
-            <div className={style.main} >
-                <div className={style.head}>
-                <div onClick={handleIcon}><ArrowBackIcon/></div>
-            <h2 className={style.heading}>Tweet</h2>
-            </div>
-          <div className={style.navContainer}>
-            <div className={style.container}>
-              
-              <div>
-              {item.profileIcon}
+      <div className={style.maincontainer}>
+    <Left/>
+    <div className={style.mid}>
+    <div onClick={handleIcon}><ArrowBackIcon /></div>
+    <h2>Tweet</h2>
+      {activeProfile.map((item) => (
+        <div>
+        <div className={style.topitems}>
+        <div className={style.top}>
+          {item.profileIcon}
+          <b> {item.name}</b>
+          {item.handlerName}
+          </div>
+          <div className={style.more}>
+          {item.more}
+          </div>
+          </div>
+          {item.tweets.map((ele) => (
+            <div className={style.miditems} >
+              <p>{ele.tweetText}</p>
+              <img src={ele.tweetPic} />
+              <div className={style.icons}>
+                {item.icons1}
+                {item.icons2}
+                {item.icons3}
+                {item.icons4}
+                {item.icons5}
               </div>
-              <div className={style.name}>{item.name} </div>
-              <VerifiedIcon />
-              {item.handlerName}
+              {ele.TweetReplies.map((element) => (
+                <div className={style.comment}>
+               <div className={style.reply}>
+               <div className={style.replytop}>
+                 {element.profileIcon}'
+                <h3><b>{element.name}</b></h3>
+                {element.handlerName}
+                </div>
+                <div className={style.more}>
+                {item.more}
+                </div>
+               </div>
+               <div className={style.text} >
+                {element.tweetReplyText}
+              </div>
+               </div>
+              ))}
             </div>
 
-            <div className={style.more}>{item.more}</div>
-          </div>
-          <div className={style.img_caption}>
-            <div className={style.caption}> {item.tweets[0].tweetText}</div>
-            <div className={style.links}>{item.refLink} </div>
-            <div className={style.hashtags}> {item.hastags}</div>
-            <img
-              src={item.tweets[0].tweetPic}
-              alt="Image Here"
-              className={style.img}
-            />
-          </div>
-          <div className={style.icons}>
-            <div>{item.icons1}</div>
-            <div>
-              {item.icons2}
-              {item.tweets[0].retweetCount}
-            </div>
-            <div onClick={()=>handleLike(index,item)}>
-              {item.icons3}
-              {item.tweets[0].likesCount} 
-            </div>
-            <div onClick={handleViews}>
-              {item.icons4}
-              {item.tweets[0].viewsCount}
-            </div>
-            {item.icons5}
-          </div>
-          <div className={style.reply}>
-          {item.tweets[0].TweetReplies[0].profileIcon}
-          <div>
-          {item.tweets[0].TweetReplies[0].name}
-          {item.tweets[0].TweetReplies[0].handlerName}
-          </div>
-          {item.tweets[0].TweetReplies[0].tweetReplyText}
-          </div>
-          <div>
-          {item.tweets[0].TweetReplies[1].profileIcon}
-          {item.tweets[0].TweetReplies[1].name}
-          {item.tweets[0].TweetReplies[1].handlerName}
-          {item.tweets[0].TweetReplies[1].tweetReplyText}
-          </div>
+          ))}
         </div>
-        <Right/>  
-            </div>
-        ))}   
-        
-        </>
+
+      ))}
+      </div>
+      <Right/>
+    </div>
+       
+      
     )
 }

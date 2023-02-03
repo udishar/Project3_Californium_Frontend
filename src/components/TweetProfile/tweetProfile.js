@@ -10,34 +10,37 @@ import CustomButton from "../../atoms/button/button";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRecoilState } from "recoil";
-import {tweetData} from '../../atom';
+import {tweetData , updatedActiveProfile} from '../../atom';
 import Left from "../LeftSide/left";
 import Right from "../Right/right";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+
 function TweetProfile() {
     
     const [ProfileList , setProfileList]=useRecoilState(tweetData)
-    console.log(ProfileList,"kuch bhi")
+    // console.log(ProfileList,"kuch bhi")
     const [likes, setLikes] = useState(100);
     const [searchParams] = useSearchParams();
-    const [activeProfile,setActiveProfile] =useState([])
+    const [activeProfile,setActiveProfile] =useRecoilState(updatedActiveProfile)
     const [isopenComment, setIsOpenComment] = useState(false);
     const [isViewOpen, setViewOpen] = useState(false);
    let navigate= useNavigate()
   
     
     useEffect(()=>{
-        console.log(searchParams.get("handlerName"))
-        let clickingIndex=ProfileList.filter((ele)=>ele.handlerName == searchParams.get("handlerName"))
-        console.log(clickingIndex)
-        console.log(ProfileList,"kuch bhi")
+        // console.log(searchParams.get("handlerName"))
+        let clickingIndex=ProfileList.filter((ele)=>ele.id == searchParams.get("id"))
+        // let clickingIndex=ProfileList.filter((ele)=>ele.handlerName == searchParams.get("handlerName"))
+         console.log(clickingIndex, "after index")
+        // console.log(ProfileList,"from tweet profile")
         setActiveProfile(clickingIndex)
     },[])
+    useEffect(()=>{},[activeProfile])
      
 function handleProfileIcon(index,item){
-    console.log(item.handlerName)
+    // console.log(item.handlerName)
      navigate(`/tweetProfile?handlerName=${item.handlerName}`)
    }
 
@@ -89,7 +92,7 @@ function TabPanel(props) {
     };
     const [file, setFile] = useState();
     function editProfile(e){
-        console.log("clickimg")
+        // console.log("clickimg")
         setFile(URL.createObjectURL(e.target.files[0]));
     }useEffect(()=>{},[])
 

@@ -1,4 +1,4 @@
-.main{
+/* .main{
     overflow-y:scroll ;
     overflow: hidden;
     height: auto;
@@ -110,4 +110,76 @@ color:rgb(155, 151, 151);
     align-items: flex-start;
     justify-content:space-between;
 
+} */
+
+.maincontainer{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.mid{
+    margin-left: 25rem;
+    width:40rem;
+    margin-right: 5rem;
+    border: 1px solid lightgray;
+    padding:0.4rem
+}
+.topitems{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.top>b{
+    margin-left:0.5rem;
+}
+.miditems>img{
+    width:90%;
+    border-radius: 30px;
+    margin:1.7rem;
+    height: 25rem;
+    
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:0.8rem;
+    color:grey;
+}
+.reply{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.replytop{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+   
+}
+.reply>b{
+    margin-left:0.5rem;
+    font-size: 1.5rem;
+}
+.proicon{
+    margin-left: 0.2rem;
+}
+.text{
+    margin-left: 3rem;
+    font-size: 1.2rem;
+    margin-top:-1rem
+}
+.comment{
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+.more{
+    color:grey;
 }

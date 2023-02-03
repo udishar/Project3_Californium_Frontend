@@ -17,8 +17,10 @@ import IosShareIcon from '@mui/icons-material/IosShare';
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import img from '../Middle/imagee/3.jpg'
+import {nanoid} from 'nanoid'
 
 function Middle() {
+
   const [newTweetText, setNewTweetText] = useRecoilState(tweetData);
  const [input, setInput] = useState("");
   const [image,setImage]=useState("")
@@ -35,12 +37,14 @@ function handleNewTweet(inputTweet) {
     // console.log("clicked");
     
     const newTweet = {
+      id:nanoid(),
       profileIcon: <img src={img} className={middleStyle.img}/>,
       name:`${userName[0].phoneNumber}`,
       handlerName: `@${userName[0].username}`,
   
     tweets :[
       {
+
         tweetText:input,
       tweetPic:image
     }
@@ -59,7 +63,7 @@ function handleNewTweet(inputTweet) {
     setImage("")
     inputRef.current.value=""
   }
-  console.log(newTweetText,"kuch bhi")
+  console.log(newTweetText,"something")
   const iconList = [
     {
         icon : <CollectionsIcon
@@ -132,7 +136,9 @@ inputRef.current.click()
               padding: "1rem",
               width: "30rem",
               border: "none",
-              fontSize:"1.6rem"
+              fontSize:"1.6rem",
+             
+
             }}
             handleChange={handleNewTweet}
             value={input}
